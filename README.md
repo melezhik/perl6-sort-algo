@@ -8,6 +8,12 @@
 
 # USAGE
 
+List existing algorithms:
+
+    tom | grep sort
+
+Run example:
+
     tom sort-*
 
 # Author

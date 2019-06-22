@@ -14,7 +14,7 @@ repeat {
       dump-a($i-1,@a);
 
       if (@a[$i-1] > @a[$i]) {
-        swap( $i-1, $i );
+        swap( @a, $i-1, $i );
         $swapped = True
       }
 
@@ -23,14 +23,3 @@ repeat {
 
 } until $swapped == False;
 
-sub swap ( $i, $j ) {
-  
-  say "swap $i and $j";
-
-  my $temp = @a[$i];
-
-  @a[$i] = @a[$j];
-
-  @a[$j] = $temp;
-
-}

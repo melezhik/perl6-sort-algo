@@ -30,3 +30,16 @@ sub dump-a ($current,@a) is export {
 
 }
 
+
+sub swap ( @a, $i, $j ) is export {
+  
+  say "swap $i and $j";
+
+  my $temp = @a[$i];
+
+  @a[$i] = @a[$j];
+
+  @a[$j] = $temp;
+
+}
+

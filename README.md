@@ -8,7 +8,7 @@
 
 # USAGE
 
-tom sort-*
+    tom sort-*
 
 # Author
 

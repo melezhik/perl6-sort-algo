@@ -1,12 +1,16 @@
 #!perl6
 
+use lib 'lib';
+
+use Utils;
+
 my @a = (1,2,4,6,1,3,5,3,8,3);
 
 my $i = 0;
 
 say "\n";
 
-dump-a(0);
+dump-a(0,@a);
 
 while ( $i < @a.elems - 1  ) {
 
@@ -23,7 +27,7 @@ while ( $i < @a.elems - 1  ) {
 
   $i++;
 
-  dump-a($i);
+  dump-a($i,@a);
 
 }
 
@@ -55,32 +59,3 @@ sub find-less-then ( @a, int $what ) {
 
 }
 
-sub dump-a ($current) {
-
-  print "N:";
-  for 0 .. @a.elems -1 -> $i {
-    print $i == $current ?? "|*$i|" !! "|$i|";
-  }
-
-  print "\n";
-
-  for 0 .. @a.elems -> $i {
-    print "---";
-  }
-
-  print "\n";
-
-  print "V:";
-  for @a -> $i {
-    print "|$i|"
-  }
-
-  print "\n";
-
-  for 0 .. @a.elems -> $i {
-    print "---";
-  }
-
-  print "\n\n";
-
-}

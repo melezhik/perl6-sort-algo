@@ -1,21 +1,23 @@
 #!perl6
 
-my @a = (1,2,4,6,1,3,5,3,7,8,3);
+my @a = (1,2,4,6,1,3,5,3,8,3);
 my $i = 0;
 
-say @a.perl;
+dump-a();
 
 while ( $i < @a.elems - 1  ) {
 
-  if @a[$i+1] < @a[$i] {
-    say "@a[$i+1] < @a[$i]";
-    if my $j = find-less-then(@a, @a[$i+1]) {
-      say "insert $j => $i";
-      insert-element(@a, $i, $j);
+  my $neigh = $i+1;
+
+  if @a[$neigh] < @a[$i] {
+    say "\@a[$neigh]={@a[$i+1]} < \@a[$i]={@a[$i]} ... run find-less-then";
+    if my $j = find-less-then(@a, @a[$neigh]) {
+      say "insert \@a[$neigh]={@a[$neigh]} => \@a[$j]={@a[$j]}";
+      insert-element(@a, $j, $neigh);
     }
 
   }
-  say @a.perl;
+  dump-a();
   $i++;
 }
 
@@ -40,7 +42,7 @@ sub find-less-then ( @a, int $what ) {
 
   loop ( my $i = 0; $i < @a.elems; $i++ ) {
     say "{@a[$i]} <> $what";
-    if @a[$i] < $what {
+    if @a[$i] > $what {
       say "{@a[$i]} < $what. return $i";
       return $i 
     }
@@ -48,4 +50,34 @@ sub find-less-then ( @a, int $what ) {
 
   return
 
+}
+
+sub dump-a () {
+
+  print "N:";
+  for 0 .. @a.elems -1 -> $i {
+    print "|$i|";
+  }
+
+  print "\n";
+
+  for 0 .. @a.elems -> $i {
+    print "---";
+  }
+
+  print "\n";
+
+  print "V:";
+  for @a -> $i {
+    print "|$i|"
+  }
+
+  print "\n";
+
+  for 0 .. @a.elems -> $i {
+    print "---";
+  }
+
+  print "\n\n";
+  
 }
